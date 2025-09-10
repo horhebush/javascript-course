@@ -109,3 +109,78 @@ console.log('Ready for advanced features in Hour 2!');
 
 console.log('Secret number for testing:', secretNumber);
 console.log('Try to guess it!');
+
+
+
+// Score tracking - reduce score for worng guesses
+
+// Add this inside your event listener, after the game logic
+if (guess === secretNumber) {
+           console.log('Correct guess!')
+        document.querySelector('.message').textContent = '🎉 Correct Number!';
+        document.querySelector('.number').textContent = secretNumber;
+} else if (guess > secretNumber) {
+    console.log('Too high!');
+    document.querySelector('.message').textContent = '📈 Too high!';
+    score--;
+} else if (guess < secretNumber) {
+    console.log('Too low!');
+    document.querySelector('.message').textContent = '📉 Too low!';
+    score--;
+}
+
+document.querySelector('.score').textContent = score;
+
+//section 2 win or lose
+
+
+if (guess === secretNumber) {
+    console.log('Correct guess!')
+    document.querySelector('.message').textContent = '🎉 Correct Number!';
+    document.querySelector('.number').textContent = secretNumber;
+
+    if (score > highscore) {
+        highscore = score;
+        document.querySelector('.highscore').textContent = highscore;
+    }
+
+    document.querySelector('.message').textContent = '🎉 Panalo ka dire!';
+    document.querySelector('.guess').disabled = true;
+    document.querySelector('.check').disabled = true;
+}
+
+if (score < 1) {
+    document.querySelector('.message').textContent = '💥 You lost!';
+    document.querySelector('.number').textContent = secretNumber;
+    document.querySelector('.guess').disabled = true;
+    document.querySelector('.check').disabled = true;
+}
+
+
+//game restart
+
+document.querySelector('.again').addEventListener('click', function() {
+    score = 20;
+    secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+    document.querySelector('.score').textContent = score;
+    document.querySelector('.number').textContent = '?';
+    document.querySelector('.message').textContent = 'Start guessing...';
+    document.querySelector('.guess').value = '';
+    document.querySelector('.guess').disabled = false;
+    document.querySelector('.check').disabled = false;
+
+});
+
+//final verification code
+
+
+console.log('🎮 Enhanced Game Complete!');
+console.log('✅ Score tracking working');
+console.log('✅ Win/lose conditions implemented');
+console.log('✅ Game restart functionality working');
+console.log('✅ Complete game experience ready');
+console.log('Ready for visual polish in Hour 3!');
+
+console.log('Test: Try to win, try to lose, then restart!');
+
