@@ -19,7 +19,7 @@ const closeModal = function () {
 }
 
 btnsOpenModalEl.forEach(btn => btn.addEventListener('click', openModal));
-btnsCloseModalEl.addEventListener('click', closeModal)
+btnCloseModalEl.addEventListener('click', closeModal)
 overlayEl.addEventListener('click', closeModal)
 
 
